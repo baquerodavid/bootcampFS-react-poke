@@ -35,10 +35,6 @@
 
 .card {
   padding: 2em;
-  border: 1px solid whitesmoke;
-  border-radius: 8px;
-  box-shadow: 4px 2px 2px whitesmoke;
-  margin-top: 16px;
 }
 
 .read-the-docs {
@@ -53,14 +49,4 @@ input {
 
 img {
   height: 200px;
-}
-
-.pokemonName {
-  text-transform: capitalize;
-}
-
-.error {
-  color: crimson;
-  font-size: 18px;
-  font-weight: 600;
 }

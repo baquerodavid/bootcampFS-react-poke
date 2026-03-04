@@ -1,5 +1,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import SearchForm from './components/SearchForm/SearchForm';
+import PokemonCard from './components/PokemonCard/PokemonCard';
+import StatusMessage from './components/StatusMessage/StatusMessage';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -53,32 +56,15 @@ function App() {
       <h1>Buscador de Pokemon</h1>
       <p>Escribe el nombre del Pokemon que quieres ver:</p>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Pikachu"
-          value={searchTerm}
-          onChange={handleChange}
-        />
-      </form>
+      <SearchForm
+        searchTerm={searchTerm}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+      />
 
-      {loading && <p>Cargando...</p>}
+      <StatusMessage loading={loading} error={error} />
 
-      {error && <p className='error'>{error}</p>}
-
-      {pokemon && (
-        <div className='card'>
-          <h2 className='pokemonName'>{pokemon.name}</h2>
-          <img
-            src={
-              pokemon.sprites?.other?.['official-artwork']?.front_default ||
-              pokemon.sprites?.front_default ||
-              ''
-            }
-            alt={pokemon.name}
-          />
-        </div>
-      )}
+      {pokemon && !loading && !error && <PokemonCard pokemon={pokemon} />}
     </>
   );
 }
